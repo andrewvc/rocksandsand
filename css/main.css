@@ -1,7 +1,29 @@
 body {
-  background: url('/images/roughcloth.png');
+  /*background: url('/images/rockywall.png');*/
+  background-color: #333;
 }
 
-canvas {
-  background :#fff;
+#container {
+  width: 760px;
+  margin: 0px auto;
+}
+
+header {
+  text-align: center;
+  font-family: courier;
+  font-size: 40px;
+  margin: 10px 15px;
+
+  color: #f5f5f5;
+}
+
+#garden {
+  background: #fff;
+  width: 740px;
+  height: 500px;
+  border: 1px solid #afafaf;
+
+  -webkit-box-shadow: 0px 0px 150px 10px rgba(100, 100, 150, 1);
+  -moz-box-shadow: 0px 0px 150px 10px rgba(100, 100, 150, 1);
+  box-shadow: 0px 0px 150px 10px rgba(100, 100, 100, 1);
 }
