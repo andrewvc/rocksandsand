@@ -60,6 +60,8 @@ function Pen (garden) {
     this.state = 'up';
     this.lastTinePositions = null;
   };
+  this.brushSize = 30;
+  this.tineCount = 5;
 }
 
 Pen.prototype.rakeTo = function (endX,endY) {
@@ -67,6 +69,10 @@ Pen.prototype.rakeTo = function (endX,endY) {
   var ctx = this.garden.ctx;
   var slope = (this.y - endY) / (this.x - endX);
   var pSlope = -(1 / slope); //Perpendicular slope
+  var brushSize = this.brushSize;
+  var tineCount = 5;
+  var brushSpacing = brushSize / tineCount;
+
   ymod = pSlope <= 1 ? pSlope : 1;
   ymod = ymod >= -1 ? ymod : -1;
 
@@ -81,9 +87,6 @@ Pen.prototype.rakeTo = function (endX,endY) {
     xmod = Math.abs(xmod);
   }
   
-  var brushSize = 25;
-  var tineCount = 5;
-  var brushSpacing = brushSize / tineCount;
 
   // Flip the tines over periodically so as to prevent path crossover
   // during rake flips
@@ -118,18 +121,18 @@ Pen.prototype.rakeTo = function (endX,endY) {
     ctx.strokeStyle = "fff";
     ctx.moveTo(lastTinePos[0], lastTinePos[1]);
 
-    _.times(60, function () {
+    // surrounding grains
+    _.times(30, function () {
       ctx.fillStyle = 'rgba(100,100,100,' + (Math.random() - 0.65) + ')';
-      var qCtrlX = (lastTinePos[0] + tinePos[0]) / 2;
-      var qCtrlY = (lastTinePos[1] + lastTinePos[1]) / 2;
+      var x = (lastTinePos[0] + tinePos[0]) / 2;
+      var y = (lastTinePos[1] + lastTinePos[1]) / 2;
       var offBy = (Math.random() * 6) - 4;
-      var size = Math.random() * 1.8;
-      ctx.fillRect(qCtrlX + offBy, qCtrlY + offBy, size,size);
+      var size = Math.random() * 2.2;
+      ctx.fillRect(x + offBy, y + offBy, size,size);
     });
 
-
-
-    ctx.lineWidth = 4;
+    // Inner white
+    ctx.lineWidth = (Math.random()*2.0) + 2.4;
     ctx.lineTo(tinePos[0], tinePos[1]);
     ctx.stroke();
   });
@@ -150,13 +153,12 @@ function Garden (selector) {
     w = this.el.width;
     h = this.el.height;
     
-    var grainCount = (w * h) / 1.5;
-    this.ctx.globalAlpha = 0.8;
-    this.ctx.fillStyle = "999";
+    var grainCount = (w * h) * 2;
     for (var i=0; i < grainCount; i++) {
       var x = Math.random() * w;
       var y = Math.random() * h;
-      var size = Math.random()*1.2;
+      var size = Math.random();
+      this.ctx.fillStyle = "rgba(190,190,190," + (Math.random()) + ")";
       this.ctx.fillRect(x,y, size, size); 
     }
   }
@@ -182,7 +184,7 @@ garden.$el.mouseout(function (e) {
 garden.$el.mousemove(function (e) {
   if (garden.pen.state === 'down') {
     var coords = garden.el.relMouseCoords(e);
-    if (distance([garden.pen.x, garden.pen.y], [coords.x, coords.y]) > 1) {
+    if (distance([garden.pen.x, garden.pen.y], [coords.x, coords.y]) > 4) {
       garden.pen.rakeTo(coords.x, coords.y);
     }
   }
