@@ -56,6 +56,10 @@ header {
   margin-top: 10px;
 }
 
+#rock-caddy:empty {
+  display: none;
+}
+
 footer {
   font-family: Helvetica, arial;
   font-variant: small-caps;

@@ -224,7 +224,7 @@ garden.$el.droppable({
     var rockCanvas = ui.helper[0];
     garden.ctx.moveTo(0,0);
     garden.ctx.drawImage(rockCanvas,relLeft,relTop,rockCanvas.width,rockCanvas.height);
-    ui.helper.hide();
+    ui.helper.remove();
     //  console.log('drop',ui.offset.left,ui.offset.top);
   }
 });
