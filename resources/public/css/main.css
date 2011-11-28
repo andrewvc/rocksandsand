@@ -14,10 +14,17 @@ h1, header, p {
   margin:  0px;
 }
 
+h2 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 h1 {
   font-size: 18px;
   font-variant: small-caps;
 }
+
+ul { list-style-type: diamond;}
 
 a, a:visited {
   color: #333;
@@ -70,4 +77,14 @@ footer {
 
 #create-new {
     margin: 10px 0px;
+}
+
+#recent a {
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+#complete {
+  display: block;
+  padding: 20px 0px;
 }

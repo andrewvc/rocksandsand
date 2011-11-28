@@ -25,8 +25,8 @@
              [:div {:id "main" :role "main"}
                content]
              [:footer
-               (link-to "/about" "About Rocks and Sand")
-               "&lt;&gt;"
+               (link-to "/about" "About")
+               " &lt;&gt; "
                (link-to "https://github.com/andrewvc/rocksandsand" "Source Code")]
            ]
      (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js")

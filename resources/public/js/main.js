@@ -13,12 +13,18 @@ if (XMLHttpRequest.prototype.sendCanvasAsBinary === undefined) {
   };
 }
 
-function postCanvasToURL(url, name, fn, canvas, type) {
+function postCanvasToURL(url, name, fn, canvas, type, callback) {
   var data = canvas.toDataURL(type);
   data = data.replace('data:' + type + ';base64,', '');
 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', url, true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      callback(xhr.response);
+    }
+  };
   var boundary = 'ohaiimaboundary';
   xhr.setRequestHeader(
     'Content-Type', 'multipart/form-data; boundary=' + boundary);
@@ -188,7 +194,10 @@ function Garden (selector) {
     var idata = self.ctx.getImageData(0,0,self.el.width,self.el.height);
     console.log("Data stored, uploading ", idata);
     var fdata = new FormData();
-    postCanvasToURL("/upload", "garden", "garden.png", this.el, "image/png");
+    postCanvasToURL("/upload", "garden-file", "garden.png", this.el, "image/png",
+      function (response) {
+        window.location = "/gardens/" + response;
+      });
   };
 
   this.dumpSand = function () {
@@ -313,5 +322,13 @@ $(function () {
     rock.onReady = function () {
       $('#rock-caddy').append(rock.canvas);
     };
+  });
+
+  $('#complete').click(function (e) {
+    if (confirm("This will save this garden permanently, you will no longer be able to edit it. Are you sure?")) {
+        garden.upload();
+        $('#main').text("Uploading...");
+     }
+     return false;
   });
 });

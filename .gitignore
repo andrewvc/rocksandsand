@@ -6,3 +6,4 @@ pom.xml
 *.swp
 *.swn
 *.swo
+src/rocksandsand/config.clj
