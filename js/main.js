@@ -132,7 +132,7 @@ Pen.prototype.rakeTo = function (endX,endY) {
     });
 
     // Inner white
-    ctx.lineWidth = (Math.random()*1.7) + 1.8;
+    ctx.lineWidth = (Math.random()*1.7) + 2.0;
     ctx.lineTo(tinePos[0], tinePos[1]);
     ctx.stroke();
   });
@@ -145,11 +145,23 @@ Pen.prototype.rakeTo = function (endX,endY) {
 }
 
 function Garden (selector) {
+  var self = this;
   this.$el = $(selector);
   this.el  = this.$el[0];
   this.ctx = this.el.getContext('2d');
   this.pen = new Pen(this);
+
   this.dumpSand = function () {
+    var img = new Image();
+    img.onload = function () {
+      self.ctx.drawImage(img, 0,0, img.width, img.height);
+    }
+    img.src = "/images/empty-sand.png";
+  };
+  // This generates a random sand pattern, quite slow
+  // Generally loading an image of the sand is much faster
+  this.generateSand = function () {
+    return
     w = this.el.width;
     h = this.el.height;
     
@@ -234,7 +246,7 @@ garden.$el.mouseout(function (e) {
 garden.$el.mousemove(function (e) {
   if (garden.pen.state === 'down') {
     var coords = garden.el.relMouseCoords(e);
-    if (distance([garden.pen.x, garden.pen.y], [coords.x, coords.y]) > 4) {
+    if (distance([garden.pen.x, garden.pen.y], [coords.x, coords.y]) > 5) {
       garden.pen.rakeTo(coords.x, coords.y);
     }
   }

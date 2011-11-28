@@ -1,6 +1,7 @@
 body {
   /*background: url('/images/rockywall.png');*/
   background-color: #fff;
+  font-family: Inconsolata, sans-serif;
 }
 
 #container {
@@ -18,9 +19,18 @@ h1 {
   font-variant: small-caps;
 }
 
+a, a:visited {
+  color: #333;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 header {
   text-align: left;
-  font-family: Inconsolata, sans-serif;
   font-size: 16px;
   margin: 10px 0px;
 
@@ -44,4 +54,14 @@ header {
 
 #rock-caddy {
   margin-top: 10px;
+}
+
+footer {
+  font-family: Helvetica, arial;
+  font-variant: small-caps;
+  font-size: 12px;
+  position:fixed;
+  bottom:0px;
+  background: #f9f9f9;
+  opacity: 0.8;
 }
