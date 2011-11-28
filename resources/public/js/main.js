@@ -56,7 +56,6 @@ function Pen (garden) {
   };
   this.lastTinePosition = null;
   this.reset = function () {
-    console.log("Resetting " + this);
     this.state = 'up';
     this.lastTinePositions = null;
   };
@@ -122,8 +121,8 @@ Pen.prototype.rakeTo = function (endX,endY) {
     ctx.moveTo(lastTinePos[0], lastTinePos[1]);
 
     // surrounding grains
-    _.times(30, function () {
-      ctx.fillStyle = 'rgba(100,100,100,' + (Math.random() - 0.65) + ')';
+    _.times(40, function () {
+      ctx.fillStyle = 'rgba(80,80,80,' + (Math.random() - 0.65) + ')';
       var x = (lastTinePos[0] + tinePos[0]) / 2;
       var y = (lastTinePos[1] + lastTinePos[1]) / 2;
       var offBy = (Math.random() * 6) - 4;
@@ -154,9 +153,9 @@ function Garden (selector) {
   this.dumpSand = function () {
     var img = new Image();
     img.onload = function () {
-      self.ctx.drawImage(img, 0,0, img.width, img.height);
+      self.ctx.drawImage(img, 10, 10, img.width, img.height);
     }
-    img.src = "/images/empty-sand.png";
+    img.src = "/images/empty-sand-dark.png";
   };
   // This generates a random sand pattern, quite slow
   // Generally loading an image of the sand is much faster
@@ -186,18 +185,12 @@ function Rock (url, width) {
   this.$canvas.addClass('rock');
 
   this.img.onload = function () {
-    //self.canvas.draggable = true;
     var aspect = self.img.height / self.img.width;
     self.canvas.width  = width;
     self.canvas.height = width * aspect;
     self.ctx           = self.canvas.getContext('2d');
     self.ctx.drawImage(self.img, 0, 0, self.canvas.width, self.canvas.height);
-    self.$canvas.draggable({
-      drop: function (e,ui) {
-        console.log("HAI!");
-
-      }
-    });
+    self.$canvas.draggable();
      
     if (self.onReady) {
       self.onReady();
@@ -219,13 +212,10 @@ garden.$el.droppable({
   drop: function (e,ui) {
     var relTop  = ui.helper.offset().top  - garden.$el.offset().top;
     var relLeft = ui.helper.offset().left - garden.$el.offset().left;
-    console.log("Placing stone", relTop, relLeft);
-    console.log(garden.$el.offset().top, ui.helper.offset().top);
     var rockCanvas = ui.helper[0];
     garden.ctx.moveTo(0,0);
     garden.ctx.drawImage(rockCanvas,relLeft,relTop,rockCanvas.width,rockCanvas.height);
     ui.helper.remove();
-    //  console.log('drop',ui.offset.left,ui.offset.top);
   }
 });
 

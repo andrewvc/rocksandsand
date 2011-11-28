@@ -5,7 +5,7 @@ body {
 }
 
 #container {
-  width: 740px;
+  width: 760px;
   margin: 0px auto;
 }
 
@@ -48,17 +48,15 @@ header {
   cursor: crosshair;
 }
 
-#rock-caddy, #garden {
-  border: 1px solid #afafaf;
-}
-
 #rock-caddy {
   margin-top: 10px;
 }
 
+/*
 #rock-caddy:empty {
   display: none;
 }
+*/
 
 footer {
   font-family: Helvetica, arial;
@@ -68,4 +66,8 @@ footer {
   bottom:0px;
   background: #f9f9f9;
   opacity: 0.8;
+}
+
+#create-new {
+    margin: 10px 0px;
 }
