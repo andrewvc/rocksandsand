@@ -1,3 +1,37 @@
+/**
+ * Requirements:
+ * - jQuery (John Resig, http://www.jquery.com/)
+ **/
+(function($){if($.browser.mozilla){$.fn.disableTextSelect=function(){return this.each(function(){$(this).css({"MozUserSelect":"none"})})};$.fn.enableTextSelect=function(){return this.each(function(){$(this).css({"MozUserSelect":""})})}}else{if($.browser.msie){$.fn.disableTextSelect=function(){return this.each(function(){$(this).bind("selectstart.disableTextSelect",function(){return false})})};$.fn.enableTextSelect=function(){return this.each(function(){$(this).unbind("selectstart.disableTextSelect")})}}else{$.fn.disableTextSelect=function(){return this.each(function(){$(this).bind("mousedown.disableTextSelect",function(){return false})})};$.fn.enableTextSelect=function(){return this.each(function(){$(this).unbind("mousedown.disableTextSelect")})}}}})(jQuery)
+
+if (XMLHttpRequest.prototype.sendCanvasAsBinary === undefined) {
+  XMLHttpRequest.prototype.sendAsBinary = function(string) {
+    var bytes = Array.prototype.map.call(string, function(c) {
+      return c.charCodeAt(0) & 0xff;
+    });
+    this.send(new Uint8Array(bytes).buffer);
+  };
+}
+
+function postCanvasToURL(url, name, fn, canvas, type) {
+  var data = canvas.toDataURL(type);
+  data = data.replace('data:' + type + ';base64,', '');
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url, true);
+  var boundary = 'ohaiimaboundary';
+  xhr.setRequestHeader(
+    'Content-Type', 'multipart/form-data; boundary=' + boundary);
+  xhr.sendAsBinary([
+    '--' + boundary,
+    'Content-Disposition: form-data; name="' + name + '"; filename="' + fn + '"',
+    'Content-Type: ' + type,
+    '',
+    data,
+    '--' + boundary + '--'
+  ].join('\r\n'));
+}
+
 function relMouseCoords(event) {
     // Thanks to: http://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
     var totalOffsetX = 0;
@@ -137,7 +171,7 @@ Pen.prototype.rakeTo = function (endX,endY) {
   });
 
   pen.lastTinePositions = tinePositions;
-  
+
   pen.rakeState = 'unavailable';
   pen.x = endX;
   pen.y = endY;
@@ -150,6 +184,13 @@ function Garden (selector) {
   this.ctx = this.el.getContext('2d');
   this.pen = new Pen(this);
 
+  this.upload = function () {
+    var idata = self.ctx.getImageData(0,0,self.el.width,self.el.height);
+    console.log("Data stored, uploading ", idata);
+    var fdata = new FormData();
+    postCanvasToURL("/upload", "garden", "garden.png", this.el, "image/png");
+  };
+
   this.dumpSand = function () {
     var img = new Image();
     img.onload = function () {
@@ -157,6 +198,8 @@ function Garden (selector) {
     }
     img.src = "/images/empty-sand-dark.png";
   };
+
+
   // This generates a random sand pattern, quite slow
   // Generally loading an image of the sand is much faster
   this.generateSand = function () {
@@ -220,10 +263,18 @@ garden.$el.droppable({
 });
 
 garden.$el.mousedown(function (e) {
-    var coords = garden.el.relMouseCoords(e);
-    garden.pen.state = 'down';
-    garden.pen.setCoords(coords);
+  var coords = garden.el.relMouseCoords(e);
+  garden.pen.state = 'down';
+  garden.pen.setCoords(coords);
+  return false;
 });
+
+garden.$el.bind('selectStart', function (e) {
+  e.preventDefault();
+  return false;
+});
+
+garden.$el.disableTextSelect();
 
 garden.$el.mouseup(function (e) {
   garden.pen.reset();

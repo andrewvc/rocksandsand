@@ -2,35 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cb90508-405e-4763-86f5-3fc448b1662b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rocksandsand.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/rocksandsand/views/index.clj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/rocksandsand/views/upload.clj" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\apple-touch-icon-114x114-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\apple-touch-icon-57x57-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\apple-touch-icon-72x72-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\apple-touch-icon-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\apple-touch-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\config.ru" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\css\main.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\css\style.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\images\empty-sand.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\images\rocks\0.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\images\rocks\1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\images\rocks\2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\images\rocks\3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\jquery-1.6.2.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\jquery-1.6.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\jquery-ui.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\modernizr-2.0.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\respond.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\respond.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\script.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\libs\underscore.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\main.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andrew\projects\rocksandsand\static\js\script.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/public/js/main.js" afterPath="$PROJECT_DIR$/resources/public/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/rocksandsand/views/common.clj" afterPath="$PROJECT_DIR$/src/rocksandsand/views/common.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/rocksandsand/views/upload.clj" afterPath="$PROJECT_DIR$/src/rocksandsand/views/upload.clj" />
     </list>
     <ignored path="rocksandsand.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,7 +69,7 @@
           <file leaf-file-name="server.clj" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/rocksandsand/server.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -103,7 +78,7 @@
           <file leaf-file-name="garden.clj" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/garden.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="57" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0">
+                <state line="2" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -112,16 +87,16 @@
           <file leaf-file-name="index.clj" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/index.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="3" column="34" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/public/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="157" column="37" selection-start="4236" selection-end="4236" vertical-scroll-proportion="0.0">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -130,16 +105,16 @@
           <file leaf-file-name="common.clj" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/common.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="27" column="52" selection-start="1014" selection-end="1014" vertical-scroll-proportion="0.0">
+                <state line="30" column="11" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/public/css/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="50" column="0" selection-start="618" selection-end="618" vertical-scroll-proportion="0.20543806">
+                <state line="44" column="0" selection-start="574" selection-end="574" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -152,7 +127,7 @@
           <file leaf-file-name="common.clj" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/common.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="19" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
+                <state line="20" column="13" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -161,7 +136,16 @@
           <file leaf-file-name="upload.clj" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/upload.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="9" column="20" selection-start="319" selection-end="319" vertical-scroll-proportion="0.46223566">
+                <state line="21" column="12" selection-start="809" selection-end="809" vertical-scroll-proportion="0.94864047">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="project.clj" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/project.clj">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="27" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -187,10 +171,11 @@
         <option value="$PROJECT_DIR$/src/rocksandsand/server.clj" />
         <option value="$PROJECT_DIR$/src/rocksandsand/views/index.clj" />
         <option value="$PROJECT_DIR$/src/rocksandsand/views/garden.clj" />
-        <option value="$PROJECT_DIR$/resources/public/js/main.js" />
-        <option value="$PROJECT_DIR$/src/rocksandsand/views/common.clj" />
-        <option value="$PROJECT_DIR$/src/rocksandsand/views/upload.clj" />
         <option value="$PROJECT_DIR$/resources/public/css/main.css" />
+        <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/src/rocksandsand/views/upload.clj" />
+        <option value="$PROJECT_DIR$/src/rocksandsand/views/common.clj" />
+        <option value="$PROJECT_DIR$/resources/public/js/main.js" />
       </list>
     </option>
   </component>
@@ -502,7 +487,7 @@
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="CafeBabe" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="CafeBabe" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944608" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -560,51 +545,58 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/index.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/rocksandsand/server.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/garden.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="57" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0">
+        <state line="2" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/public/js/main.js">
+    <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="37" selection-start="4236" selection-end="4236" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/index.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="34" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/common.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="52" selection-start="1014" selection-end="1014" vertical-scroll-proportion="0.0">
+        <state line="4" column="27" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/upload.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="20" selection-start="319" selection-end="319" vertical-scroll-proportion="0.46223566">
+        <state line="21" column="12" selection-start="809" selection-end="809" vertical-scroll-proportion="0.94864047">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rocksandsand/views/common.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="11" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/public/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="618" selection-end="618" vertical-scroll-proportion="0.20543806">
+        <state line="44" column="0" selection-start="574" selection-end="574" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
