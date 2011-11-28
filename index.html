@@ -25,10 +25,11 @@
 
 <div id="container">
 	<header>
-    <h1>Rocks &amp; Sand</h1>
+    <h1>Rocks &#9648; Sand</h1>
 	</header>
 	<div id="main" role="main">
     <canvas id="garden" width="740" height="500"></canvas>   
+    <div id="rock-caddy"></div>
 	</div>
 	<footer>
     
@@ -44,7 +45,9 @@
 <![endif]-->
 
 <script type="text/javascript">
-  $script(['js/libs/underscore.min.js','js/main.js']);
+  $script(['js/libs/jquery-ui.min.js','js/libs/underscore.min.js'], function () {
+    $script(['js/main.js']);
+  });
 </script>
 </body>
 </html>

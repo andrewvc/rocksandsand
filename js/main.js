@@ -127,12 +127,12 @@ Pen.prototype.rakeTo = function (endX,endY) {
       var x = (lastTinePos[0] + tinePos[0]) / 2;
       var y = (lastTinePos[1] + lastTinePos[1]) / 2;
       var offBy = (Math.random() * 6) - 4;
-      var size = Math.random() * 2.2;
+      var size = Math.random() * 1.7;
       ctx.fillRect(x + offBy, y + offBy, size,size);
     });
 
     // Inner white
-    ctx.lineWidth = (Math.random()*2.0) + 2.4;
+    ctx.lineWidth = (Math.random()*1.7) + 1.8;
     ctx.lineTo(tinePos[0], tinePos[1]);
     ctx.stroke();
   });
@@ -157,14 +157,65 @@ function Garden (selector) {
     for (var i=0; i < grainCount; i++) {
       var x = Math.random() * w;
       var y = Math.random() * h;
-      var size = Math.random();
+      var size = Math.random() / 1.5;
       this.ctx.fillStyle = "rgba(190,190,190," + (Math.random()) + ")";
       this.ctx.fillRect(x,y, size, size); 
     }
   }
 }
 
+function Rock (url, width) {
+  var self = this;
+  this.img = $('<img>')[0];
+
+  this.$canvas = $('<canvas></canvas>');
+  this.canvas  = this.$canvas[0];
+
+  this.$canvas.addClass('rock');
+
+  this.img.onload = function () {
+    //self.canvas.draggable = true;
+    var aspect = self.img.height / self.img.width;
+    self.canvas.width  = width;
+    self.canvas.height = width * aspect;
+    self.ctx           = self.canvas.getContext('2d');
+    self.ctx.drawImage(self.img, 0, 0, self.canvas.width, self.canvas.height);
+    self.$canvas.draggable({
+      drop: function (e,ui) {
+        console.log("HAI!");
+
+      }
+    });
+     
+    if (self.onReady) {
+      self.onReady();
+    }
+  };
+
+  this.img.src = url;
+
+  this.onReady = function () {};
+}
+
 window.garden = new Garden('#garden');
+
+garden.$el.bind('dragover', function (e) {
+  e.preventDefault();
+});
+
+garden.$el.droppable({
+  drop: function (e,ui) {
+    var relTop  = ui.helper.offset().top  - garden.$el.offset().top;
+    var relLeft = ui.helper.offset().left - garden.$el.offset().left;
+    console.log("Placing stone", relTop, relLeft);
+    console.log(garden.$el.offset().top, ui.helper.offset().top);
+    var rockCanvas = ui.helper[0];
+    garden.ctx.moveTo(0,0);
+    garden.ctx.drawImage(rockCanvas,relLeft,relTop,rockCanvas.width,rockCanvas.height);
+    ui.helper.hide();
+    //  console.log('drop',ui.offset.left,ui.offset.top);
+  }
+});
 
 garden.$el.mousedown(function (e) {
     var coords = garden.el.relMouseCoords(e);
@@ -180,7 +231,6 @@ garden.$el.mouseout(function (e) {
   garden.pen.reset();
 });
 
-
 garden.$el.mousemove(function (e) {
   if (garden.pen.state === 'down') {
     var coords = garden.el.relMouseCoords(e);
@@ -193,4 +243,22 @@ garden.$el.mousemove(function (e) {
 $(function () {
   garden.dumpSand();
   garden.pen.startSampler();
+  garden.rocks = [];
+  // Filename of the rock + its width
+  // it will be proportionally resized
+  var rocksMeta = [
+    ['0.png', 130],
+    ['1.png', 80],
+    ['2.png', 60],
+    ['3.png', 120],
+  ];
+  _.each(rocksMeta, function (rockMeta) {
+    var fn    = rockMeta[0];
+    var width = rockMeta[1];
+    var rock  = new Rock('/images/rocks/' + fn, width);
+    garden.rocks.push(rock);
+    rock.onReady = function () {
+      $('#rock-caddy').append(rock.canvas);
+    };
+  });
 });

@@ -4,7 +4,7 @@ body {
 }
 
 #container {
-  width: 760px;
+  width: 740px;
   margin: 0px auto;
 }
 
@@ -15,6 +15,7 @@ h1, header, p {
 
 h1 {
   font-size: 18px;
+  font-variant: small-caps;
 }
 
 header {
@@ -30,10 +31,17 @@ header {
   background: #fff;
   width: 740px;
   height: 500px;
-  border: 1px solid #afafaf;
   cursor: crosshair;
 }
 
 #garden:active {
   cursor: crosshair;
+}
+
+#rock-caddy, #garden {
+  border: 1px solid #afafaf;
+}
+
+#rock-caddy {
+  margin-top: 10px;
 }
