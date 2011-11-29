@@ -2,7 +2,41 @@
  * Requirements:
  * - jQuery (John Resig, http://www.jquery.com/)
  **/
+ // Disable text select plugin
 (function($){if($.browser.mozilla){$.fn.disableTextSelect=function(){return this.each(function(){$(this).css({"MozUserSelect":"none"})})};$.fn.enableTextSelect=function(){return this.each(function(){$(this).css({"MozUserSelect":""})})}}else{if($.browser.msie){$.fn.disableTextSelect=function(){return this.each(function(){$(this).bind("selectstart.disableTextSelect",function(){return false})})};$.fn.enableTextSelect=function(){return this.each(function(){$(this).unbind("selectstart.disableTextSelect")})}}else{$.fn.disableTextSelect=function(){return this.each(function(){$(this).bind("mousedown.disableTextSelect",function(){return false})})};$.fn.enableTextSelect=function(){return this.each(function(){$(this).unbind("mousedown.disableTextSelect")})}}}})(jQuery)
+
+// Convert drag stuff to touch stuff for mobile
+
+function touchHandler(event)
+{
+ var touches = event.changedTouches,
+    first = touches[0],
+    type = "";
+
+     switch(event.type)
+{
+    case "touchstart": type = "mousedown"; break;
+    case "touchmove":  type="mousemove"; break;
+    case "touchend":   type="mouseup"; break;
+    default: return;
+}
+var simulatedEvent = document.createEvent("MouseEvent");
+simulatedEvent.initMouseEvent(type, true, true, window, 1,
+                          first.screenX, first.screenY,
+                          first.clientX, first.clientY, false,
+                          false, false, false, 0/*left*/, null);
+
+first.target.dispatchEvent(simulatedEvent);
+event.preventDefault();
+}
+
+function touchInit()
+{
+   document.addEventListener("touchstart", touchHandler, true);
+   document.addEventListener("touchmove", touchHandler, true);
+   document.addEventListener("touchend", touchHandler, true);
+   document.addEventListener("touchcancel", touchHandler, true);
+}
 
 if (XMLHttpRequest.prototype.sendCanvasAsBinary === undefined) {
   XMLHttpRequest.prototype.sendAsBinary = function(string) {
@@ -33,7 +67,7 @@ function postCanvasToURL(url, name, fn, canvas, type, callback) {
     'Content-Disposition: form-data; name="' + name + '"; filename="' + fn + '"',
     'Content-Type: ' + type,
     '',
-    data,
+    atob(data),
     '--' + boundary + '--'
   ].join('\r\n'));
 }
@@ -225,6 +259,55 @@ function Garden (selector) {
       this.ctx.fillRect(x,y, size, size); 
     }
   }
+ //
+
+
+
+  this.$el.bind('dragover', function (e) {
+    e.preventDefault();
+  });
+
+  this.$el.droppable({
+    drop: function (e,ui) {
+      var relTop  = ui.helper.offset().top  - garden.$el.offset().top;
+      var relLeft = ui.helper.offset().left - garden.$el.offset().left;
+      var rockCanvas = ui.helper[0];
+      garden.ctx.moveTo(0,0);
+      garden.ctx.drawImage(rockCanvas,relLeft,relTop,rockCanvas.width,rockCanvas.height);
+      ui.helper.remove();
+    }
+  });
+
+  this.$el.mousedown(function (e) {
+    var coords = garden.el.relMouseCoords(e);
+    garden.pen.state = 'down';
+    garden.pen.setCoords(coords);
+    return false;
+  });
+
+  this.$el.bind('selectStart', function (e) {
+    e.preventDefault();
+    return false;
+  });
+
+  this.$el.disableTextSelect();
+
+  this.$el.mouseup(function (e) {
+    garden.pen.reset();
+  });
+
+  this.$el.mouseout(function (e) {
+    garden.pen.reset();
+  });
+
+  this.$el.mousemove(function (e) {
+    if (garden.pen.state === 'down') {
+      var coords = garden.el.relMouseCoords(e);
+      if (distance([garden.pen.x, garden.pen.y], [coords.x, coords.y]) > 5) {
+        garden.pen.rakeTo(coords.x, coords.y);
+      }
+    }
+  });
 }
 
 function Rock (url, width) {
@@ -254,55 +337,15 @@ function Rock (url, width) {
   this.onReady = function () {};
 }
 
-window.garden = new Garden('#garden');
 
-garden.$el.bind('dragover', function (e) {
-  e.preventDefault();
-});
 
-garden.$el.droppable({
-  drop: function (e,ui) {
-    var relTop  = ui.helper.offset().top  - garden.$el.offset().top;
-    var relLeft = ui.helper.offset().left - garden.$el.offset().left;
-    var rockCanvas = ui.helper[0];
-    garden.ctx.moveTo(0,0);
-    garden.ctx.drawImage(rockCanvas,relLeft,relTop,rockCanvas.width,rockCanvas.height);
-    ui.helper.remove();
-  }
-});
-
-garden.$el.mousedown(function (e) {
-  var coords = garden.el.relMouseCoords(e);
-  garden.pen.state = 'down';
-  garden.pen.setCoords(coords);
-  return false;
-});
-
-garden.$el.bind('selectStart', function (e) {
-  e.preventDefault();
-  return false;
-});
-
-garden.$el.disableTextSelect();
-
-garden.$el.mouseup(function (e) {
-  garden.pen.reset();
-});
-
-garden.$el.mouseout(function (e) {
-  garden.pen.reset();
-});
-
-garden.$el.mousemove(function (e) {
-  if (garden.pen.state === 'down') {
-    var coords = garden.el.relMouseCoords(e);
-    if (distance([garden.pen.x, garden.pen.y], [coords.x, coords.y]) > 5) {
-      garden.pen.rakeTo(coords.x, coords.y);
-    }
-  }
-});
 
 $(function () {
+  if (!$('#garden')[0]) {
+    return;
+  }
+  touchInit();
+  window.garden = new Garden('#garden');
   garden.dumpSand();
   garden.pen.startSampler();
   garden.rocks = [];
