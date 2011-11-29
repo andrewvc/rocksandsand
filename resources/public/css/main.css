@@ -59,22 +59,6 @@ header {
   margin-top: 10px;
 }
 
-/*
-#rock-caddy:empty {
-  display: none;
-}
-*/
-
-footer {
-  font-family: Helvetica, arial;
-  font-variant: small-caps;
-  font-size: 12px;
-  position:fixed;
-  bottom:0px;
-  background: #f9f9f9;
-  opacity: 0.8;
-}
-
 #create-new {
     margin: 10px 0px;
 }

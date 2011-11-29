@@ -6,4 +6,5 @@ pom.xml
 *.swp
 *.swn
 *.swo
-src/rocksandsand/config.clj
+resources/config.json
+.idea/workspace.xml

@@ -1,5 +1,0 @@
-(ns rocksandsand.config)
-
-(def s3-credentials {:access-key nil
-                     :secret-key nil})
-(def s3-bucket nil)

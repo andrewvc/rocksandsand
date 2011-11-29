@@ -24,10 +24,7 @@
                  (link-to "/" "Rocks &#9648; Sand")]]
              [:div {:id "main" :role "main"}
                content]
-             [:footer
-               (link-to "/about" "About")
-               " &lt;&gt; "
-               (link-to "https://github.com/andrewvc/rocksandsand" "Source Code")]
+
            ]
      (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js")
      (javascript-tag "window.jQuery || document.write('<script src=\"/js/libs/jquery-1.6.2.min.js\"><\\/script>');")

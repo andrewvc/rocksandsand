@@ -7,5 +7,10 @@
 (defpage "/about" []
   (common/layout
     [:h2 "About"]
-    [:p "Created By: "
-      (link-to "http://www.andrewvc.com" "Andrew Cholakian")]))
+    [:p
+     " &lt;&gt; "
+      "Created By: "
+      (link-to "http://www.andrewvc.com" "Andrew Cholakian")]
+    [:p
+      " &lt;&gt; Source: "
+      (link-to "https://github.com/andrewvc/rocksandsand" "github/rocksandsand")]))

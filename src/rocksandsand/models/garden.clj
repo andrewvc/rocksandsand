@@ -11,7 +11,9 @@
 (def recent (ref []))
 
 (def s3-service
-  (let [{:keys [access-key secret-key]} config/s3-credentials]
+  (let [credentials (config/option :s3-credentials)
+        access-key  (get credentials "access-key")
+        secret-key  (get credentials "secret-key")]
     (new RestS3Service (new AWSCredentials access-key secret-key))))
 
 (defn put!
@@ -26,4 +28,4 @@
     (alter recent conj uuid)
     (ref-set recent (take-last 20 @recent)))
   (println @recent)
-  (put! config/s3-bucket file))
+  (put! (config/option :s3-bucket) file))
