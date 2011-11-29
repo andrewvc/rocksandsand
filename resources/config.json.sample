@@ -3,5 +3,6 @@
     "access-key": "" ,
     "secret-key": ""
   },
-  "s3-bucket": ""
+  "s3-bucket": "",
+  "analytics-code": ""
 }
