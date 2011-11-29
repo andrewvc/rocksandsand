@@ -13,3 +13,5 @@
   ([k config-data]
     (cond (keyword? k) (get config-data (name k))
           :else        (get config-data k))))
+
+(def redis-opts {:host "localhost" :port 6379})

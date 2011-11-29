@@ -67,7 +67,7 @@ function postCanvasToURL(url, name, fn, canvas, type, callback) {
     'Content-Disposition: form-data; name="' + name + '"; filename="' + fn + '"',
     'Content-Type: ' + type,
     '',
-    atob(data),
+    data,
     '--' + boundary + '--'
   ].join('\r\n'));
 }

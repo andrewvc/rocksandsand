@@ -5,13 +5,14 @@
            (org.jets3t.service.acl AccessControlList)
            (org.jets3t.service.impl.rest.httpclient RestS3Service)
            (org.jets3t.service.model S3Object))
-  (:require [rocksandsand.config :as config]
-            [noir.util.s3 :as s3]))
+  (:require [rocksandsand.config :as conf]
+            [redis.core :as redis]))
 
-(def recent (ref []))
+(def garden-uuids-key "garden-uuids")
+(def recent-gardens-key "garden-uuids:recent")
 
 (def s3-service
-  (let [credentials (config/option :s3-credentials)
+  (let [credentials (conf/option :s3-credentials)
         access-key  (get credentials "access-key")
         secret-key  (get credentials "secret-key")]
     (new RestS3Service (new AWSCredentials access-key secret-key))))
@@ -23,9 +24,15 @@
     (. obj setAcl (. AccessControlList REST_CANNED_PUBLIC_READ))
     (. s3-service putObject bucket obj)))
 
+(defn recent []
+  "Returns a short list of recent garden uuids"
+  (redis/with-server conf/redis-opts
+    (redis/lrange recent-gardens-key  0 -1)))
+
 (defn create [uuid file]
-  (dosync
-    (alter recent conj uuid)
-    (ref-set recent (take-last 20 @recent)))
-  (println @recent)
-  (put! (config/option :s3-bucket) file))
+  (let [score (double (/ (System/currentTimeMillis) 1000))]
+    (redis/with-server conf/redis-opts
+      (redis/zadd garden-uuids-key score uuid)
+      (redis/lpush recent-gardens-key uuid)
+      (redis/ltrim recent-gardens-key 0 19))
+  (put! (conf/option :s3-bucket) file)))
