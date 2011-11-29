@@ -14,5 +14,5 @@
     [:h2 "&#9673; Recent Gardens"]
     [:ul {:id "recent"}
       (map (fn [uuid] [:li (link-to (str "/gardens/" uuid)  uuid)])
-           (garden/recent))]
+           (reverse (garden/recent)))]
     (link-to "/about" "◪ About")))
