@@ -8,3 +8,4 @@ pom.xml
 *.swo
 resources/config.json
 .idea/workspace.xml
+tmp/*
