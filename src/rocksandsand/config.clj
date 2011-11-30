@@ -7,15 +7,14 @@
   "Converts a nested map to have only keyword keys.
    In the case of conflicts will overwrite existing
    keyword keys with string key value"
-  (doall
-    (reduce
-      (fn [m [k v]]
-        (assoc m
-               (keyword k)
-               (cond (map? v) (str-keys->keyword-keys v)
-                     :else    v)))
-      {}
-      smap)))
+  (reduce
+    (fn [m [k v]]
+      (assoc m
+             (keyword k)
+             (cond (map? v) (str-keys->keyword-keys v)
+                   :else    v)))
+    {}
+    smap))
 
 (defn load-config [filename]
   "Loads a JSON config file from a given resource filename
