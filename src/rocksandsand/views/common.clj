@@ -15,9 +15,9 @@
        "/css/style.css"
        "/css/main.css")
      (include-js
-       "js/libs/modernizr-2.0.min.js"
-       "js/libs/respond.min.js"
-       "js/libs/script.js")
+       "/js/libs/modernizr-2.0.min.js"
+       "/js/libs/respond.min.js"
+       "/js/libs/script.js")
      (javascript-tag "try{Typekit.load();}catch(e){};")]
     [:body [:div {:id "container"}
              [:header
