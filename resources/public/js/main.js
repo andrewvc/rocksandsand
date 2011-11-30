@@ -191,7 +191,7 @@ Pen.prototype.rakeTo = function (endX,endY) {
     var lastTinePos = pen.lastTinePositions[lastTineIdx];
 
     ctx.beginPath();
-    ctx.strokeStyle = "fff";
+    ctx.strokeStyle = "#fff";
     ctx.moveTo(lastTinePos[0], lastTinePos[1]);
 
     // surrounding grains
@@ -235,6 +235,8 @@ function Garden (selector) {
   };
 
   this.dumpSand = function () {
+    self.ctx.fillStyle = "#FF0000";
+    self.ctx.fillRect(img, 0, 0, self.width, self.height);
     var img = new Image();
     img.onload = function () {
       self.ctx.drawImage(img, 10, 10, img.width, img.height);
