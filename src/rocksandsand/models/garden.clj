@@ -18,6 +18,7 @@
   (let [score (double (/ (System/currentTimeMillis) 1000))]
     (rs-s3/put-public! (conf/opts :s3-bucket) file)
     (rs-redis/with-server
-      (redis/zadd garden-uuids-key score uuid)
-      (redis/lpush recent-gardens-key uuid)
-      (redis/ltrim recent-gardens-key 0 19))))
+      (redis/atomically
+        (redis/zadd garden-uuids-key score uuid)
+        (redis/lpush recent-gardens-key uuid)
+        (redis/ltrim recent-gardens-key 0 19)))))
