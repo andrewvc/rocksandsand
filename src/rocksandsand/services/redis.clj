@@ -4,4 +4,4 @@
 
 (defmacro with-server [& body]
   "Equivalent to (with-server conf/redis-opts body)"
-  `(redis/with-server (conf/opts :redis) ~@body))
+  `(redis/with-server (conf/opt :redis) ~@body))

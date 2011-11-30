@@ -16,7 +16,7 @@
 
 (defn create [uuid file]
   (let [score (double (/ (System/currentTimeMillis) 1000))]
-    (rs-s3/put-public! (conf/opts :s3-bucket) file)
+    (rs-s3/put-public! (conf/opt :s3-bucket) file)
     (rs-redis/with-server
       (redis/atomically
         (redis/zadd garden-uuids-key score uuid)

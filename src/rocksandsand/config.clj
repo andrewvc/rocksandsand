@@ -28,6 +28,10 @@
 
 (def opts (load-config "config.json"))
 
+(defmacro opt [& path-keys]
+  "Take a seq of symbols to get the path to an option"
+  `(-> opts ~@path-keys))
+
 (defmacro let-opts
   [bindings & body]
   "Executes body with bindings destructured from the opts map

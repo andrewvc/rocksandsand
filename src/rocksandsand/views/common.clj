@@ -36,7 +36,7 @@
      ")
      (javascript-tag (str "
        var _gaq = _gaq || [];
-       _gaq.push(['_setAccount', '" (config/opts :analytics-code) "']);
+       _gaq.push(['_setAccount', '" (config/opt :analytics-code) "']);
        _gaq.push(['_trackPageview']);
 
        (function() {
