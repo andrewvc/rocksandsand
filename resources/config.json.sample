@@ -4,5 +4,9 @@
     "secret-key": ""
   },
   "s3-bucket": "",
-  "analytics-code": ""
+  "analytics-code": "",
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  }
 }
