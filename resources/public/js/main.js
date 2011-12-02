@@ -38,7 +38,7 @@ function touchInit()
    document.addEventListener("touchcancel", touchHandler, true);
 }
 
-if (XMLHttpRequest.prototype.sendCanvasAsBinary === undefined) {
+if (XMLHttpRequest.prototype.sendAsBinary === undefined) {
   XMLHttpRequest.prototype.sendAsBinary = function(string) {
     var bytes = Array.prototype.map.call(string, function(c) {
       return c.charCodeAt(0) & 0xff;
