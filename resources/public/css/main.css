@@ -72,3 +72,11 @@ header {
   display: block;
   padding: 20px 0px;
 }
+
+#about {
+  color: #555;
+}
+
+#about a {
+  color: #444;
+}

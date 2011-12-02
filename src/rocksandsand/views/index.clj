@@ -15,4 +15,12 @@
     [:ul {:id "recent"}
       (map (fn [uuid] [:li (link-to (str "/gardens/" uuid)  uuid)])
            (garden/recent))]
-    (link-to "/about" "◪ About")))
+    [:div {:id "about"}
+      [:h2 "◪ About"]
+      [:p
+       " &lt;&gt; "
+        "Created By: "
+        (link-to "http://www.andrewvc.com" "Andrew Cholakian")]
+      [:p
+        " &lt;&gt; Source: "
+        (link-to "https://github.com/andrewvc/rocksandsand" "github/rocksandsand")]]))
