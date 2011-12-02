@@ -9,7 +9,7 @@
         [hiccup.core :only [html]]
         [hiccup.page-helpers :only [link-to]]))
 
-(defn process-upload [file]
+(defn decode-upload [file]
   "Decodes a base64 encoded uploaded file from an uploaded canvas"
     (let [b64 (slurp (:tempfile file))
           decoded  (base64/decode (.getBytes b64 "UTF-8"))
@@ -21,7 +21,7 @@
       {:decoded-file out-file :uuid uuid}))
 
 (defpage [:post "/upload"] {:keys [garden-file]}
-  (let [{:keys [decoded-file uuid]} (process-upload garden-file)]
+  (let [{:keys [decoded-file uuid]} (decode-upload garden-file)]
     (try
       (garden/create uuid decoded-file)
       (finally
