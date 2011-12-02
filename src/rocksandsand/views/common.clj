@@ -10,6 +10,9 @@
      [:title "Rocks &#9648; Sand"]
      [:meta {:name "description", :content "A garden of rocks and sand"}]
      [:meta {:name "author", :content "Andrew Cholakian"}]
+
+     [:link {:rel "icon" :type "image/png" :href "/favicon.png"}]
+
      (include-css
        "http://fonts.googleapis.com/css?family=Inconsolata"
        "/css/style.css"
